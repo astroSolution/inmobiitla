@@ -1,3 +1,5 @@
+<?php $this->load->view('partes/p_header');?>
+<?php $this->load->view('partes/p_navegacion');?>
 <section id="login">
   <div class="container">
     <form class="form-horizontal" action="<?php echo base_url('Usureg/login');?>" method="post">
@@ -15,3 +17,4 @@
     </form>
   </div>
 </section>
+<?php $this->load->view('partes/p_footer');?>
