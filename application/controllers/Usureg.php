@@ -11,7 +11,11 @@ class Usureg extends CI_Controller{
 
   function index()
   {
-    $this->load->view('secciones/v_login');
+
+  }
+  function regitro(){
+    $this->load->helper('form');
+    $this->load->view("secciones/usuarios/u_registro");
   }
 
 }
