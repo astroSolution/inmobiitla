@@ -1,40 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<title><?php echo $titulo; ?></title>
     <div class="container">
 
 
-      <h3>Datos del Usuario</h3>
+      <h3>Publicar</h3>
       <div class="row">
-      <form class="" action="<?php echo base_url('usuario/guardar')?>" method="post">
+      <form class="" action="<?php //echo base_url('usuario/guardar')?>" method="post">
           <div class="col-md-6">
             <div class="form-group input-group">
               <span class="input-group-addon">Id:</span>
-              <input class="form-control" readonly type="text" name="id" value="<?php echo $usuario->id; ?>">
+              <input class="form-control" readonly type="text" name="id" value="">
             </div>
             <div class="form-group input-group">
               <span class="input-group-addon">Usuario:</span>
-              <input class="form-control" type="text" name="usuario" value="<?php echo $usuario->usuario; ?>">
+              <input class="form-control" type="text" name="usuario" value="">
             </div>
 
 
           <div class="form-group input-group">
               <span class="input-group-addon">Clave:</span>
-              <input class="form-control" type="text" name="clave" value="<?php echo $usuario->clave; ?>">
+              <input class="form-control" type="text" name="clave" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">nombre:</span>
-              <input class="form-control" type="text" name="nombre" value="<?php echo $usuario->nombre; ?>">
+              <input class="form-control" type="text" name="nombre" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">email:</span>
-              <input class="form-control" type="text" name="email" value="<?php echo $usuario->email; ?>">
+              <input class="form-control" type="text" name="email" value="">
             </div>
 
             <div class="text-left">
@@ -47,5 +41,3 @@
         </div>
 
       </div>
-  </body>
-</html>

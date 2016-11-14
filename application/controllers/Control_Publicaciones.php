@@ -8,10 +8,11 @@ class Control_Publicaciones extends CI_Controller{
     parent::__construct();
     //Codeigniter : Write Less Do More
   }
-
   function index()
   {
-
+    //Aqui le seteo el titulo, a la ventana
+    $data['titulo'] = "Publicar";
+    $this->load->view('secciones/v_publicar',$data);
   }
 
 }
