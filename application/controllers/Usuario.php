@@ -42,10 +42,10 @@ function desencriptar($cadena){
       $_POST['contrasena'] = md5($_POST['contrasena']);
       $usu = explode('@',$_POST['correo']);
       $_POST['usuario'] =$usu[0];
-var_dump($_POST);
-        $_POST['idusuario'] = Usuario::desencriptar($_POST['idusuario']);
-      $this->Usuario_model->registraUsu($_POST);
-      //redirect('Usuario/registro',$data);
+      $_POST['idusuario'] = Usuario::desencriptar($_POST['idusuario']);
+    //  $this->Usuario_model->registraUsu($_POST);
+      $data['titulo'] = "Proceso completo";
+      $this->load->view('secciones/v_procesocompletado', $data);
     }
   }
 

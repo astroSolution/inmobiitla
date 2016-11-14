@@ -1,6 +1,4 @@
-<?php $this->load->view('partes/p_header', $titulo);
-
-?>
+<?php $this->load->view('partes/p_header', $titulo);?>
 <section id="registro">
   <div class="container">
     <div class="col-md-6 col-md-offset-3">
