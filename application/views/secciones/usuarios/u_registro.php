@@ -1,17 +1,20 @@
-<?php $this->load->view('partes/p_header', $titulo);?>
+<?php $this->load->view('partes/p_header', $titulo);
+echo $ok;
+?>
 <section id="registro">
   <div class="container">
     <div class="col-md-6 col-md-offset-3">
       <h2 class="text-center">Registro</h2>
       <hr>
     <form class="form-horizontal" action="<?php echo base_url('Usuario/registrar');?>" method="post">
+      <input type="hidden" name="idusuario" value="">
       <div class="form-group input-group">
         <span class="input-group input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
         <input type="text" name="cedula" placeholder="Cedula" class="form-control"/>
       </div>
       <div class="form-group input-group">
         <span class="input-group input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-        <input type="text" name="correo" placeholder="Correo" class="form-control"/>
+        <input type="email" name="correo" placeholder="Correo" class="form-control"/>
       </div>
       <div class="form-group input-group">
         <span class="input-group input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -32,6 +35,10 @@
       <div class="form-group input-group">
         <span class="input-group input-group-addon"><i class="glyphicon glyphicon-print"></i></span>
         <input type="text" name="fax" placeholder="Fax" class="form-control"/>
+      </div>
+      <div class="form-group input-group">
+        <span class="input-group input-group-addon"><i class="glyphicon glyphicon-password"></i></span>
+        <input type="text" name="contrasena" placeholder="contrase&ntilde;a" class="form-control"/>
       </div>
       <div class="form-group input-group">
         <span class="input-group input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>

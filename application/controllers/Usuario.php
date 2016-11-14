@@ -19,7 +19,15 @@ class Usuario extends CI_Controller{
     $this->load->view("secciones/usuarios/u_registro",$data);
   }
   function registrar(){
-    var_dump($_POST);
+    if($_POST){
+      $data['ok'] = "ok";
+      $_POST['contrasena'] = md5($_POST['contrasena']);
+      $usu = explode('@',$_POST['correo']);
+      $_POST['usuario'] =$usu[0];
+var_dump($_POST);
+      $this->Usuario_model->registraUsu($_POST);
+      //redirect('Usuario/registro',$data);
+    }
   }
 
 }
