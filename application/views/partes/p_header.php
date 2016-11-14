@@ -7,6 +7,15 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="<?php echo base_url('public/js/bootstrap.min.js');?>"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('[data-toggle="popover"]').popover();
+    });
+
+    </script>
+
         <script type="text/javascript" scr="<?php echo base_url('public/js/inmobi.js');?>"></script>
   </head>
   <body>

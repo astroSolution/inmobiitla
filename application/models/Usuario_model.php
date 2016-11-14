@@ -8,6 +8,7 @@ class Usuario_model extends CI_Model{
     parent::__construct();
     //Codeigniter : Write Less Do More
   }
+  //registra usuario
   function registraUsu($usuario) {
   $id = $usuario['idusuario'];
   if($id+0 > 0) {
@@ -18,5 +19,16 @@ class Usuario_model extends CI_Model{
       $this->db->insert('usuario',$usuario);
   }
 }
+//carga usuario para editar
+function cargaUsu($id){
+    $usuario ="";
+    $this->db->where('idusuario=',$id);
+    $query = $this->db->get('usuario');
+    $rs = $query->result();
+    if(count($rs) > 0){
+      $usuario = $rs[0];
+    }
+    return $usuario;
+  }
 
 }
