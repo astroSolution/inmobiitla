@@ -11,7 +11,7 @@ class Inicio extends CI_Controller{
 
   function index()
   {
-    $this->load->view('secciones/v_login');
+    $this->load->view('subir');
   }
 
 }

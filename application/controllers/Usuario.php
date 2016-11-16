@@ -9,6 +9,7 @@ class Usuario extends CI_Controller{
     //Codeigniter : Write Less Do More
     $this->load->model(array('Usuario_model'));
     $data=array();
+    $_SESSION['usuario']=new stdClass();
   }
 
   function index()
@@ -30,13 +31,15 @@ function desencriptar($cadena){
   function registro(){
     $data['usuid'] = Usuario::encriptar('1');
     if(isset($_GET['usuario'])){
-    $data['usuario'] = $this->Usuario_model->cargaUsu(Usuario::desencriptar($_GET['usuario']));
-    $data['usuario']->idusuario = Usuario::encriptar($data['usuario']->idusuario);
+    $_SESSION['usuario'] = $this->Usuario_model->cargaUsu(Usuario::desencriptar($_GET['usuario']));
+    var_dump($_SESSION['usuario']->nombre);
+    $_SESSION['usuario']->idusuario = Usuario::encriptar($_SESSION['usuario']->idusuario);
   }
       $data['titulo'] = "Registro";
     $this->load->view("secciones/usuarios/u_registro",$data);
   }
   function registrar(){
+    $_SESSION['usuario'] = $this->Usuario_model->cargaUsu(Usuario::desencriptar('WIyf21Bn4A0zpsoSEJVWK7p8hx0iPJbsQWPqKxnPLSI='));
     if($_POST){
       $data['ok'] = "ok";
       $_POST['contrasena'] = md5($_POST['contrasena']);
@@ -45,7 +48,7 @@ function desencriptar($cadena){
       $_POST['idusuario'] = Usuario::desencriptar($_POST['idusuario']);
     //  $this->Usuario_model->registraUsu($_POST);
       $data['titulo'] = "Proceso completo";
-      $this->load->view('secciones/v_procesocompletado', $data);
+      $this->load->view('secciones/v_procesocompletado',$data);
     }
   }
 
