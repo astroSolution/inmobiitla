@@ -1,22 +1,28 @@
 <?php
  $this->load->view('partes/p_header', $titulo);?>
+ <style media="screen">
+   .lista span{
+     display: block;
+   }
+ </style>
 <section id="completado">
   <div class="container">
-    <div class="col-md-3 col-md-offset-3">
-      <div class="">
-        <h2>¡LISTO!</h2>
-        <ul>
+    <div class="col-md-3 col-md-offset-4">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Resumen de Registro</h3>
+        </div>
+        <div class="panel-body lista">
 
+              <span>Usuario para login: <b><?php echo $this->session->usuario->usuario;?></b></span>
 
-          <?php
-          unset($_SESSION['usuario']->idusuario);
-          unset($_SESSION['usuario']->contrasena);
-            foreach ($_SESSION['usuario'] as $key => $value) {
+              <span>Nombre: <b><?php echo $this->session->usuario->nombre." ".$this->session->usuario->apellido;?></b></span>
 
-              echo "<li>".$key."</li>".$value;
-            }
-          ?>
-        </ul>
+              <span>Tel&eacute;fono: <b><?php echo $this->session->usuario->telefono;?></b></span>
+
+              <span>Correo: <b><?php echo $this->session->usuario->correo;?></b></span>
+
+        </div>
       </div>
     </div>
   </div>
