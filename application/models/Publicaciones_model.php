@@ -9,16 +9,35 @@ class Publicaciones_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
-  function obtenerPubs($idusu)
+  function obtenerPubs($idusu='')
   {
     if($idusu!=''){
-      $this->db->where('idusuario=',$idusu);
+      $this->db->where('idusuario',$idusu);
+      $this->db->Limit('10');
       $query= $this->db->get('publicacion');
 
       return $query->result();
     }else{
       $query= $this->db->get('publicacion');
       return $query->result();
+    }
+  }
+  function desactivaPub($idpub) {
+    if($idpub!=''){
+
+      $this->db->where('idpublicacion',$idpub);
+      $x= array("estatus"=>"D");
+      $this->db->update('publicacion',$x);
+      return 1;
+    }
+  }
+  function activaPub($idpub) {
+    if($idpub!=''){
+
+      $this->db->where('idpublicacion',$idpub);
+      $x= array("estatus"=>"A");
+      $this->db->update('publicacion',$x);
+      return 1;
     }
   }
 

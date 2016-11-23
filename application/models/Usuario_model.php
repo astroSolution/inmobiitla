@@ -30,5 +30,24 @@ function cargaUsu($id){
     }
     return $usuario;
   }
+  function iniciarSesion($usr, $clv)  {
+
+    $this->db->where('usuario=',$usr);
+    $this->db->where('contrasena=',$clv);
+    $query = $this->db->get('usuario');
+
+    $rs = $query->result();
+    if(count($rs) > 0){
+      return $rs;
+    }
+    $todos = $this->db->query('SELECT count(*) AS nr FROM usuario');
+    $nn = $todos->result();
+    return false;
+  }
+  function verificalogin(){
+    if(!isset($this->session->datosusu)){
+      redirect('Seguridad');
+    }
+  }
 
 }

@@ -5,11 +5,13 @@ $titulo="Panel Usuario";
   <div class="container">
     <?php
       foreach ($publicaciones as $v) {
+        $estatus =  ($v->estatus=='A') ? "Desactivar" : "Activar";
+        $estatusf = ($v->estatus=='A') ? "desactivaPub" : "activaPub";
     ?>
 
     <div class="col-md-3">
       <div class="pub thumbnail ">
-          <img src="<?php echo $v->idpublicacion; ?>" alt="">
+          <img src="<?php echo $v->idpublicacion;?>" alt="">
           <div class="info">
               <h4><a href="#"><?php echo $v->titulo; ?></a>
               </h4>
@@ -18,8 +20,8 @@ $titulo="Panel Usuario";
               <p><?php echo $v->descripcion; ?></p>
           </div>
           <div>
-            <button type="button" name="button" class="btn btn-warning">Desactivar</button>
-            <button type="button" name="button" class="btn btn-danger">Eliminar</button>
+            <a href="<?php echo base_url('mispublicaciones/'.$estatusf.'?id='.$v->idpublicacion);?>" name="button" class="btn btn-default btn-xs"><?=$estatus;?></a>
+            <a href="<?php echo base_url('mispublicaciones/editarPub?id='.$v->idpublicacion);?>" name="button" class="btn btn-default btn-xs">editar</a>
           </div>
       </div>
     </div>
