@@ -9,5 +9,6 @@
 			  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 			  crossorigin="anonymous"></script>
     <script type="text/javascript" scr="<?php echo base_url('public/js/bootstrap.js');?>"></script>
+    
   </head>
   <body>

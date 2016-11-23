@@ -7,12 +7,23 @@ class Control_Publicaciones extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    $this->load->model('Publicaciones_model');
   }
   function index()
   {
     //Aqui le seteo el titulo, a la ventana
     $data['titulo'] = "Publicar";
-    $this->load->view('secciones/v_publicar',$data);
+    $this->load->view('secciones/newfolder/dragdrop/index.php',$data);
+  }
+  function cargaFotoDragDrop()
+  {
+    $this->Publicaciones_model->ponerImagenes();
+  }
+  function guardarRegistroPub()
+  {
+    if ($_POST) {
+      $this->Publicaciones_model->guardarRegistroPubBD($_POST);
+    }
   }
 
 }
