@@ -7,11 +7,13 @@ class MisPublicaciones extends CI_Controller{
   {
     parent::__construct();
       $this->load->model(array('Usuario_model','Publicaciones_model'));
+      $this->load->helper(array('funciones'));
     //Codeigniter : Write Less Do More
   }
 
   function index()
   {
+
     $data['titulo'] = "Panel Publicaciones";
     $this->Usuario_model->verificalogin();
     $data['publicaciones'] = $this->Publicaciones_model->obtenerPubs($this->session->datosusu[0]->idusuario);
@@ -37,4 +39,6 @@ class MisPublicaciones extends CI_Controller{
     print "<script>alert('Debe elegir una publicacion');window.location.href = \"/inmobiitla/mispublicaciones/\";</script>";
     }
   }
+
+
 }

@@ -7,11 +7,14 @@ class Inicio extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    $this->load->helper(array('funciones'));
+    $this->load->model(array('Publicaciones_model'));
   }
 
   function index()
   {
-    $this->load->view('subir');
+    $data['publicaciones'] = $this->Publicaciones_model->obtenerPubs();
+    $this->load->view('secciones/v_principal', $data);
   }
 
 }

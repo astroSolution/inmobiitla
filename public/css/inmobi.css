@@ -1,0 +1,47 @@
+/*
+** JOSE GABRIEL ESCOBOSO
+** AstroSolucion **
+## Documento de Estilos
+*/
+.param-table {
+    border: 1px solid #e3e3e3;
+    border-collapse: separate;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: table;
+}
+.panel-body {
+    padding: 10px 15px;
+}
+.param-table .param-table-column {
+    padding: 8px;
+    line-height: 20px;
+    vertical-align: top;
+    border-bottom: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    margin-left: -1px;
+    text-align: right;
+}
+.prm {
+    padding-right: 20px;
+}
+.float-left {
+    float: left;
+}
+.param-table .param-table-row {
+    width: 50%;
+    float: left
+}
+
+.param-table .param-table-row:last-child .param-table-column:not(.single-param) {
+    border-right: 0
+}
+.infopublicacion{
+  max-width: 763px;
+margin: 0 auto;
+}

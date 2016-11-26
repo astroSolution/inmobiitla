@@ -15,12 +15,18 @@ class Publicaciones_model extends CI_Model{
       $this->db->where('idusuario',$idusu);
       $this->db->Limit('10');
       $query= $this->db->get('publicacion');
-
       return $query->result();
     }else{
+      $this->db->where('estatus','A');
       $query= $this->db->get('publicacion');
       return $query->result();
     }
+  }
+  function cargaPub($idpub){
+    $this->db->where('idpublicacion',$idpub);
+    $publicacion = $this->db->get('publicacion');
+
+    return $publicacion->result();
   }
   function desactivaPub($idpub) {
     if($idpub!=''){

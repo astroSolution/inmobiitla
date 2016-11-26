@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title><?php echo $titulo;?></title>
-
-    <link rel="stylesheet" href="<?php echo base_url('public/css/bootstrap.css');?>" media="screen" title="no title">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="<?php echo base_url('public/css/bootstrap.css');?>" media="screen" title="no title">
+    <link rel="stylesheet" href="<?php echo base_url('public/css/tema.css');?>" media="screen" title="no title">
     <link rel="stylesheet" href="<?php echo base_url('public/css/inmobi.css');?>" media="screen" title="no title">
 
     <script src="http://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>

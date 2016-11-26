@@ -26,9 +26,19 @@ class Usuario extends CI_Controller{
       $_POST['usuario'] =$usu[0];
       $this->Usuario_model->registraUsu($_POST);
       //para loguear cuando se loguee ver mas adelante
-      //$this->Usuario_model->iniciarSesion($_POST['usuario'],$_POST['contrasena']);
+      $tmp = $this->Usuario_model->iniciarSesion($usu[0], $_POST['contrasena']);
+      if ($tmp !== false) {
+        $this->session->datosusu = $tmp;
+        print "<script type=\"text/javascript\">alert('Bienvenido ". $_POST['nombre']."'); window.location.href = \"/inmobiitla/mispublicaciones/\";</script>";
+      }
     }
   }
+
+  function modificadatos(){
+    $usuario = $this->Usuario_model->cargaUsu($this->session->datosusu[0]->idusuario);
+    var_dump($usuario);
+  }
+
 
 
 }

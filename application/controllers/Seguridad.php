@@ -12,7 +12,8 @@ class Seguridad extends CI_Controller{
 
   function index()
   {
-    $this->load->view('secciones/v_login');
+    $data['titulo'] = "Iniciar sesion";
+    $this->load->view('secciones/v_login',$data);
   }
   function login() {
     //$data["titulo"]="Error en Login";
@@ -21,12 +22,15 @@ class Seguridad extends CI_Controller{
     $tmp = $this->Usuario_model->iniciarSesion($usuario, $clave);
     if ($tmp !== false) {
       $this->session->datosusu = $tmp;
-
-      print "<script type=\"text/javascript\">alert('Bienvenido {$usuario}'); window.location.href = \"/inmobiitla/usuario/panel/\";</script>";
+      print "<script type=\"text/javascript\">alert('Bienvenido {$usuario}'); window.location.href = \"/inmobiitla/mispublicaciones/\";</script>";
     }else{
-      print "<script type=\"text/javascript\">alert('Usuario o contrasena incorrectos'); window.location.href = \"/inmobiitla/usuario/registro/\";</script>";
+      print "<script type=\"text/javascript\">alert('Usuario o contrasena incorrectos'); window.location.href = \"/inmobiitla/seguridad/\";</script>";
 
     }
+  }
+  function salir(){
+    session_destroy();
+    print "<script type=\"text/javascript\">alert('Esperamos regrese pronto'); window.location.href = \"/inmobiitla/\";</script>";
   }
 
 }
