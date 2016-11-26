@@ -53,46 +53,46 @@ width: 100%;
       <form class="" action="<?php echo base_url('Publicar/guardarRegistroPub')?>" method="post">
             <div class="form-group input-group">
 
-              <input class="form-control" readonly type="hidden" name="idpublicacion" value="<?php echo $publicacionid->idpublicacion; ?>">
+              <input class="form-control" readonly type="hidden" name="idpublicacion" value="<?php echo $usuario->idpublicacion; ?>">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Titulo:</span>
-              <input class="form-control" type="text" name="titulo" value="" required>
+              <input class="form-control" type="text" name="titulo" value="">
             </div>
             <div class="form-group input-group">
               <span class="input-group-addon">Direccion:</span>
-              <input class="form-control" type="text" name="direccion" value="" required>
+              <input class="form-control" type="text" name="direccion" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Tipo:</span>
-              <input class="form-control" type="text" name="tipo" value="" required>
+              <input class="form-control" type="text" name="tipo" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Precio:</span>
-              <input class="form-control" type="text" name="precio" value="" required>
+              <input class="form-control" type="text" name="precio" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Accion:</span>
-              <input class="form-control" type="text" name="accion" value="" required>
+              <input class="form-control" type="text" name="accion" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Descripcion:</span>
-              <input class="form-control" type="text-area" name="descripcion" value="" required>
+              <input class="form-control" type="text-area" name="descripcion" value="">
             </div>
 
             <div class="form-group input-group">
               <!--<span class="input-group-addon">Mapita:</span>-->
-              <input class="form-control" type="hidden" name="LTN" id="lat" value="" required>
+              <input class="form-control" type="hidden" name="LTN" id="lat" value="">
             </div>
             <div class="form-group input-group">
 
               <!--<span class="input-group-addon">Mapita:</span>-->
-              <input class="form-control" type="hidden" name="LGT" id="lng" value="" required>
+              <input class="form-control" type="hidden" name="LGT" id="lng" value="">
             </div>
 
             <div class="form-group input-group">
@@ -111,7 +111,9 @@ width: 100%;
 
 
 <div class="col-md-6">
-      <div id="map"></div>
+        <div class="asd">
+          <div id="map"></div>
+        </div>
 </div>
       <div class="col-md-12">
         <br />
@@ -119,10 +121,9 @@ width: 100%;
              <span class="text-center">Arrastre aqui la Imgen de su Publicacion</span><br />
              <div class="file_drag_area">
                   Arrastrar Imagen/es
-                  <input type="file" name="" value="">
              </div>
-
              <div id="uploaded_file"></div>
+
         </div>
         <br />
 <script type="text/javascript">
