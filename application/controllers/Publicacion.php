@@ -35,4 +35,6 @@ class Publicacion extends CI_Controller{
     }
   }
 
+  
+
 }

@@ -29,7 +29,7 @@ $this->load->view('partes/p_header', $titulo);
           </div>
           <div>
             <a href="<?php echo base_url('mispublicaciones/'.$estatusf.'?id='.$v->idpublicacion);?>" name="button" class="btn btn-default btn-xs"><?=$estatus;?></a>
-            <a href="<?php echo base_url('mispublicaciones/editarPub?id='.$v->idpublicacion);?>" name="button" class="btn btn-default btn-xs">editar</a>
+            <a href="<?php echo base_url('mispublicaciones/editarPub/'.$v->idpublicacion);?>" name="button" class="btn btn-default btn-xs">editar</a>
           </div>
       </div>
     </div>
