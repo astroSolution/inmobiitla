@@ -25,14 +25,15 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" action="<?php echo base_url('buscador'); ?>">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Buscar">
         </div>
-        <button type="submit" class="btn btn-default">Buscar</button>
+        <button type="submit" name="buscar" class="btn btn-default">Buscar</button>
+        <a href="<?php echo base_url('publicacion/mapa'); ?>" class="btn btn-default">Ver Modo Mapa</a>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo base_url('/publicar');?>">Publicar</a></li>
+        <li><a href="<?php echo base_url('/Publicacion/');?>">Publicar</a></li>
         <?php if(isset($this->session->datosusu)) {?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi Cuenta<span class="caret"></span></a>

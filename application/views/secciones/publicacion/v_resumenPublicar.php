@@ -43,7 +43,7 @@
       <?php
 
       //$this->Publicaciones_model->editar();
-      $this->Publicaciones_model->imagenesEdicionPublicacion($idpub); ?>
+      $this->Publicaciones_model->imagenesEdicionPublicacion(null); ?>
 
 </form>
     </div>

@@ -37,3 +37,4 @@ $this->load->view('partes/p_header', $titulo);
 
   </div>
 </section>
+<?php $this->load->view('partes/p_footer'); ?>

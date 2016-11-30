@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Publicaciones_model extends CI_Model{
@@ -54,13 +54,44 @@ class Publicaciones_model extends CI_Model{
     }
 
   }
+  function filas()
+	{
+    $this->db->where('estatus','A');
+		$consulta = $this->db->get('publicacion');
+		return  $consulta->num_rows() ;
+	}
+
+    //obtenemos todas las provincias a paginar con la función
+    //total_posts_paginados pasando la cantidad por página y el segmento
+    //como parámetros de la misma
+	function total_paginados($por_pagina,$segmento)
+        {
+            $consulta = $this->db->get('publicacion',$por_pagina,$segmento);
+            if($consulta->num_rows()>0)
+            {
+                foreach($consulta->result() as $fila)
+		{
+		    $data[] = $fila;
+		}
+                    return $data;
+            }
+	}
 
   //----------------------------------------------------------
+function cargarSelect()
+{
+  $query = $this->db->get('tipo');
+
+      $rs = $query->result();
+
+return $rs;
+}
+
   function cargarPublicacion($id)
   {
     $publicacion = new stdclass();
-    $publicacion->idpublicacion = 0;
 
+    $id = $this->Publicaciones_model->ultimoId();
     $query = $this->db->where('idpublicacion=',$id);
     $query = $this->db->get('publicacion');
 
@@ -212,18 +243,18 @@ class Publicaciones_model extends CI_Model{
         $values =  $id."_".$a.$x;
           if ($keys<=9) {
             var_dump($a);
-        if(move_uploaded_file($_FILES['file']['tmp_name'][$keys], 'upload/' . $values))
+        if(move_uploaded_file($_FILES['file']['tmp_name'][$keys], 'upload/'.$values))
         {
           //var_dump($values);
-          $output .= '<div class="col-md-3" style="width:150px;"><img src="upload/'.$values.'" class="img-responsive img-thumbnail" /></div>';
+          $output .= '<div class="col-md-3" style="width:150px;"><img src="../upload/'.$values.'" class="img-responsive img-thumbnail" /></div>';
           }
       }/*else{
             //$errores .= $keys.", ";
 
       }*/
+      //echo "<script>alert('Limite de 10 imagenes, demas imagenes seran eliminadas');</script>";
       }
     }
-    echo "<script>alert('Limite de 10 imagenes, demas imagenes seran eliminadas');</script>";
     echo $output;
   }
 

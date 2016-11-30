@@ -1,124 +1,88 @@
 <?php $this->load->view('partes/p_header');?>
-    <style>
-.file_drag_area
-{
-
-     height:150px;
-
-     display: block;
-     width: 100%;
-     margin: 0 auto 25px auto;
-     padding: 25px;
-     color: #97A1A8;
-     background: #F9FBFE;
-     border: 2px dashed #578abd;
-     text-align: center;
-     -webkit-transition: box-shadow 0.3s,
-                         border-color 0.3s;
-     -moz-transition: box-shadow 0.3s,
-                         border-color 0.3s;
-     transition: box-shadow 0.3s,
-                         border-color 0.3s;
-}
-.file_drag_over{
-     color:#0080FF;
-     border-color:#0080FF;
-}
-#map{
-  position: static!important;
-  overflow: hidden;
-width: 100%;
-}
-.asd{
-  display: block;
-  float: left;
-}
-</style>
-<!-- Aqui termina-->
-
-</head>
 <?php $this->load->view('partes/p_navegacion');?>
-<div class="col-md-1">
-</div>
 
 <section id="publicar">
 
 
     <div class="container">
-
+<h2>Publicar</h2>
+<hr>
       <div class="col-md-4">
 
-      <h3>Publicar</h3>
+
       <div class="row">
-      <form class="" action="<?php echo base_url('Publicar/guardarRegistroPub')?>" method="post">
+      <form class="" action="<?php echo base_url('Publicacion/guardarRegistroPub');?>" method="post">
+
             <div class="form-group input-group">
 
-              <input class="form-control" readonly type="hidden" name="idpublicacion" value="<?php echo $publicacionid->idpublicacion; ?>">
+              <input class="form-control" readonly type="hidden" name="idpublicacion" value="">
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Titulo:</span>
-              <input class="form-control" type="text" name="titulo" value="" required>
+              <input class="form-control" placeholder="Apartamento, Casa, Finca" type="text" name="titulo" value="" required>
             </div>
             <div class="form-group input-group">
-              <span class="input-group-addon">Direccion:</span>
-              <input class="form-control" type="text" name="direccion" value="" required>
+              <span class="input-group-addon">Direcci&oacute;n:</span>
+              <input class="form-control" type="text" placeholder="Direccion" name="direccion" value="" required>
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Tipo:</span>
-              <input class="form-control" type="text" name="tipo" value="" required>
+              <select class="form-control" name="tipo" required>
+                <option value="">Selecciona</option>
+                <?php
+                foreach ($tipo as $value) {
+                  var_dump($tipo);
+                  echo "<option value='{$value->nombre}'>{$value->nombre}</option>";
+                }
+                ?>
+              </select>
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Precio:</span>
-              <input class="form-control" type="text" name="precio" value="" required>
+              <input class="form-control" type="number" name="precio" placeholder="120000" step="any" value="" required>
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Accion:</span>
-              <input class="form-control" type="text" name="accion" value="" required>
+              <select class="form-control" name="accion"  required>
+                <option value="">Selecciona</option>
+                <option value="V">Vender</option>
+                <option value="A">Alquilar</option>
+              </select>
             </div>
 
             <div class="form-group input-group">
               <span class="input-group-addon">Descripcion:</span>
-              <input class="form-control" type="text-area" name="descripcion" value="" required>
+              <textarea class="form-control" name="descripcion" value="" required></textarea>
+
             </div>
+            <input class="form-control" type="hidden" name="LTN" id="lat" value="" required>
 
-            <div class="form-group input-group">
-              <!--<span class="input-group-addon">Mapita:</span>-->
-              <input class="form-control" type="hidden" name="LTN" id="lat" value="" required>
-            </div>
-            <div class="form-group input-group">
-
-              <!--<span class="input-group-addon">Mapita:</span>-->
-              <input class="form-control" type="hidden" name="LGT" id="lng" value="" required>
-            </div>
-
-            <div class="form-group input-group">
-
-              <input class="form-control" readonly type="hidden" name="idusuario" value="1">
-            </div>
-            <div class="text-left">
-
-
+            <input class="form-control" type="hidden" name="LGT" id="lng" value="" required/>
+            <input class="form-control" readonly type="hidden" name="idusuario" value="<?php echo $this->session->datosusu[0]->idusuario; ?>">
               <button class="btn btn-primary" type="sumit">Guardar</button>
-            </div>
           </div>
       </form>
         </div>
 
 
+<div class="col-md-8">
+  <div class="mapa">
+      <div  id="map"></div>
+  </div>
 
-<div class="col-md-6">
-      <div id="map"></div>
 </div>
+
+
       <div class="col-md-12">
         <br />
         <div class="container" style="width:100%;" align="center">
-             <span class="text-center">Arrastre aqui la Imgen de su Publicacion</span><br />
+
              <div class="file_drag_area">
-                  Arrastrar Imagen/es
+                <h2 class="text-info">  Arrastrar Imagen/es</h2>
                   <!--<input type="file" name="" value="">-->
              </div>
 
@@ -147,7 +111,7 @@ $(document).ready(function(){
           }
           //console.log(formData);
           $.ajax({
-               url:"<?php echo base_url('Publicar/cargaFotoDragDrop')?>",
+               url:"<?php echo base_url('Publicacion/cargaFotoDragDrop')?>",
                method:"POST",
                data:formData,
                contentType:false,
@@ -173,7 +137,7 @@ var posicion;
 //funcion para iniciar mapa y marcador
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
+    zoom: 7,
     center: {lat: 18.6976733, lng: -71.2867375} //coordenadas Republica Dominicana
   });
   marcador = new google.maps.Marker({
@@ -196,6 +160,7 @@ function obtnCoodenada() {
     marcador.setAnimation(google.maps.Animation.BOUNCE);
   }
 }
+
 </script>
 </div>
 
